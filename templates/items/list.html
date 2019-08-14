@@ -7,16 +7,42 @@
   <title>淘宝网</title>
 </head>
 
+<style>
+  .add-to-cart {
+    float: right;
+    margin-right: 100px;
+    color: #FFF;
+    border-color: #F40;
+    background: #F40;
+    cursor: pointer;
+    width: 134px;
+    height: 18px;
+    text-align: center;
+    font-family: "Hiragino Sans GB", "microsoft yahei", sans-serif;
+    font-size: 10px;
+    line-height: 10px;
+    border-width: 1px;
+    border-style: solid;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+</style>
+
 <body>
   {% if list %}
   <ul>
     {% for l in list %}
     <li>
       {{ l.price }}
-      {{ l.postal }}
+      {% if l.postal %}
+      包邮
+      {% endif %}
       {{ l.title }}
       {{ l.shopNick }}
       {{ l.payNum }}
+
+      <button class="add-to-cart">加入购物车</button>
     </li>
     {% endfor %}
   </ul>
