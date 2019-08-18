@@ -8,7 +8,7 @@
   <title>淘宝网</title>
 </head>
 
-<body>
+<body class='relative cart-list'>
   {% if list %}
   <div class='item-list'>
     {% for l in list %}
@@ -27,11 +27,11 @@
         <div class='count inline-block'>
           库存 {{l.count}}
         </div>
-        <a class="add-to-cart" href="{%url 'cart:add-to-cart' l.id%}">加入购物车</a>
       </div>
-
     </div>
     {% endfor %}
+
+    <a class="to-pay" href="{%url 'pay:success' %}">去结算</a>
   </div>
   {% else %}
   <p>No items are available.</p>
