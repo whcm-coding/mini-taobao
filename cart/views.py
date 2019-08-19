@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from data.cartItems import context as cartContext
-from data.itemList import context as itemContext
+# from data.itemList import context as itemContext
+from items.models import ItemList
 
 
 def list(request):
@@ -15,7 +16,16 @@ def add(request, item_idx):
             cartItem = cartContext[item_idx]
             cartItem['count'] += 1
         else:
-            cartItem = itemContext[item_idx].copy()
+            item = ItemList.objects.get(id=item_idx)
+            cartItem = {
+                'id': item.id,
+                'price': item.price,
+                'title': item.title,
+                'shopNick': item.shopNick,
+                'payNum': item.payNum,
+                'count': item.count,
+                'image': item.image
+            }
             cartItem['count'] = 1
             cartContext[item_idx] = cartItem
 
