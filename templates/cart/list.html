@@ -25,13 +25,16 @@
       </div>
       <div class='option'>
         <div class='count inline-block'>
-          库存 {{l.count}}
+          数量 {{l.count}}
         </div>
       </div>
     </div>
     {% endfor %}
+    <form action="{%url 'pay:success' %}" method="POST">
+      {% csrf_token %}
+      <button class="to-pay">去结算</button>
+    </form>
 
-    <a class="to-pay" href="{%url 'pay:success' %}">去结算</a>
   </div>
   {% else %}
   <p>No items are available.</p>

@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
-context = {
-    'list': []
-}
-# Create your views here.
+from data.itemList import context as itemContext
+from data.cartItems import context as cartContxt
 
 
 def index(request):
-    return render(request, 'pay/success.html', context)
+    if request.method == 'POST':
+        for itemIdx in cartContxt.keys():
+            itemContext[itemIdx]['count'] -= cartContxt[itemIdx]['count']
+        cartContxt.clear()
+    return render(request, 'pay/success.html', {})

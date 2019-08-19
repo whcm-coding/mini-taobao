@@ -1,4 +1,4 @@
-context = {'list': [
+context =  [
   {
     "id": 0,
     "price": "79.00",
@@ -998,5 +998,4 @@ context = {'list': [
     "payNum": "13人付款",
     "count": 79,
     "image": "https://img.alicdn.com/imgextra/i4/246440112/O1CN013yCs3e1ChKuKkzj7B_!!0-saturn_solar.jpg_220x220.jpg_.webp"
-  },
-]}
+  }]
